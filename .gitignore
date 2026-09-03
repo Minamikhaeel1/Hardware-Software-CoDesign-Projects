@@ -1,0 +1,39 @@
+# Vivado generated data
+.Xil/
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.srcs/sources_1/bd/*/hdl/
+
+# Vivado/Vitis logs and temporary files
+*.jou
+*.log
+*.str
+*.tmp
+*.wdb
+*.dmp
+webtalk*.xml
+webtalk*.jou
+
+# Vitis generated data
+Debug/
+Release/
+_ide/
+.metadata/
+.settings/
+*.elf
+*.bif
+BOOT.BIN
+
+# Operating system/editor files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Large archives
+*.rar
+*.zip
+
