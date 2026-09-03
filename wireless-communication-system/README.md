@@ -27,21 +27,26 @@ This project explores a hardware/software communication chain on the PYNQ-Z2 usi
 | DSPs | 0 |
 | Bitstream | Generated successfully |
 
-## Validation items still required
+## Corrected software and required hardware update
 
-The bitstream result proves that the design was implemented, but it does not by itself prove correct end-to-end packet processing. Before treating the project as fully verified:
+`software/main.c` replaces the unsafe buffer-content polling with AXI DMA status polling and a timeout, initializes and starts the streaming AXI Traffic Generator, performs the required cache maintenance, and applies Gaussian noise only to the two valid encoder output bits.
 
-- Provide an AXI4-Stream `TLAST` boundary to the DMA S2MM input after the convolutional encoder.
-- Configure and start the AXI Traffic Generator from software, or replace it with a controlled stream source.
-- Make the Viterbi hard/soft-decision setting match the software sample representation.
-- Derive separate byte counts for the source, encoded data and decoder input.
-- Poll DMA status with a timeout and perform the required cache maintenance.
-- Capture valid Viterbi output in the ILA or return it to memory through another S2MM channel for automatic comparison.
+The archived bitstream cannot run that application correctly without two hardware changes:
+
+1. Insert `rtl/axis_tlast_generator.sv` after the convolutional encoder so the DMA receives a packet-ending `TLAST`.
+2. Configure the Viterbi Decoder for hard decisions and change the DMA MM2S stream width to 8 bits.
+
+Follow [HARDWARE_CHANGES.md](HARDWARE_CHANGES.md) exactly, then regenerate the bitstream and XSA before rebuilding the Vitis platform.
+
+The Viterbi output currently goes only to the ILA. Therefore, successful DMA completion proves data movement but not decoded-bit correctness. Capture the decoder output in the ILA, or add a second S2MM path for automatic comparison in software.
 
 The archived implementation also contains evaluation-licensed communication IP; deployment restrictions imposed by the generated license must be observed.
 
 ## Contents
 
 - `hardware/design_1.bd`: Vivado block-design source.
+- `software/main.c`: corrected bare-metal Vitis application for the revised hard-decision design.
+- `rtl/axis_tlast_generator.sv`: AXI4-Stream packet-boundary helper.
+- `rtl/axis_tlast_generator_tb.sv`: self-checking testbench for the helper.
+- `HARDWARE_CHANGES.md`: exact Vivado integration requirements.
 - `docs/implementation-summary.md`: implementation and reproducibility notes.
-
