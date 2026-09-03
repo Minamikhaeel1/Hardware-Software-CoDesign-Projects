@@ -28,6 +28,14 @@ _ide/
 *.bif
 BOOT.BIN
 
+# Generated hardware/platform products
+*.bit
+*.bin
+*.hwh
+*.ltx
+*.xsa
+*.xpfm
+
 # Operating system/editor files
 .DS_Store
 Thumbs.db
@@ -36,4 +44,3 @@ Thumbs.db
 # Large archives
 *.rar
 *.zip
-
