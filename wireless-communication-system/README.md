@@ -2,8 +2,6 @@
 
 This project demonstrates a simple digital communication chain implemented as a hardware/software co-design on the PYNQ-Z2 board.
 
-![Vivado block design](docs/block-design.png)
-
 ## What the project does
 
 1. The AXI Traffic Generator creates the source data.

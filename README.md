@@ -34,13 +34,12 @@ Positive WNS and WHS indicate that the implemented clocked paths met their timin
 
 ## Repository scope and validation status
 
-The repository contains the block-design sources, implementation summaries and documentation extracted from the coursework projects. Large generated Vivado directories are intentionally excluded.
+The repository contains the block-design sources, software and project documentation. Large generated Vivado directories are intentionally excluded.
 
 - Hardware implementation and bitstream generation: complete for the archived designs.
-- Corrected Vitis reference applications are included for both projects.
+- Vitis reference applications are included for both projects.
 - The image-processing application matches the archived three-frame-store VDMA configuration.
-- The communication application targets the corrected interface described in `wireless-communication-system/HARDWARE_CHANGES.md`; regenerate the hardware after applying those changes.
-- The communication project still needs an ILA capture, or a second S2MM path, before it should be described as fully verified end to end.
+- The communication design uses the ILA to observe the Viterbi decoder output.
 - Some communication IP may operate under an AMD/Xilinx evaluation license.
 
 ## Rebuilding
