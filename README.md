@@ -38,7 +38,6 @@ The repository contains the block-design sources, software and project documenta
 
 - Hardware implementation and bitstream generation: complete for the archived designs.
 - Vitis reference applications are included for both projects.
-- The image-processing application matches the archived three-frame-store VDMA configuration.
 - The communication design uses the ILA to observe the Viterbi decoder output.
 - Some communication IP may operate under an AMD/Xilinx evaluation license.
 
