@@ -23,19 +23,4 @@ Each project contains:
 - `hardware/`: the Vivado block-design source.
 - `software/main.c`: the bare-metal Vitis application.
 
-## Platform and tools
 
-- PYNQ-Z2 (`xc7z020clg400-1`)
-- AMD/Xilinx Vivado 2022.2
-- AMD/Xilinx Vitis 2022.2
-- Zynq-7000 Processing System
-- AXI4, AXI4-Lite and AXI4-Stream
-- AXI DMA and AXI VDMA
-- Integrated Logic Analyzer (ILA)
-
-## Author
-
-**Mina Mikhaeel Fathy**  
-Communication and Electronics Engineering, Helwan University
-
-Course instructor: **Mohamed Khaled**
