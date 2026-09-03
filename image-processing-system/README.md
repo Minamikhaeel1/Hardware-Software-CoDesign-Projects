@@ -32,20 +32,21 @@ This project implements a basic hardware/software image-processing pipeline on t
 | DSPs | 0 |
 | Bitstream | Generated successfully |
 
-## Important software notes
+## Software
 
-Before using the software as a reusable reference:
+`software/main.c` is a corrected Vitis 2022.2 standalone application for the archived hardware configuration. It:
 
-- Configure one VDMA frame store or provide a valid address for every configured frame store.
-- Zero-initialize `XAxiVdma_DmaSetup` before assigning its fields.
-- Check the return value of `XAxiVdma_DmaSetBufferAddr`.
-- Call `XV_tpg_Start()` after configuring and enabling auto-restart.
-- Store the computed grayscale values in a real output buffer.
-- Use a frame counter, interrupt or timeout instead of an unlimited busy loop.
-- Flush or invalidate the data cache at the DMA ownership boundaries.
+- provides all three frame-buffer addresses required by the configured VDMA;
+- starts the VDMA before the TPG;
+- captures one frame using a frame counter and timeout;
+- checks driver return values and VDMA errors;
+- performs cache maintenance at the DMA ownership boundaries; and
+- writes all 4,096 grayscale pixels to `GrayFrame` and prints their range and checksum.
+
+The normal standalone linker script must place the global buffers in PS DDR, as it does in the supplied Vitis platform.
 
 ## Contents
 
 - `hardware/c2g.bd`: Vivado block-design source.
+- `software/main.c`: corrected bare-metal Vitis application.
 - `docs/implementation-summary.md`: implementation and reproducibility notes.
-
