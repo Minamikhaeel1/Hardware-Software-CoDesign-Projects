@@ -34,6 +34,8 @@ The module passes `TDATA`, `TVALID` and `TREADY` without changing them, drives `
 4. Export a new XSA that includes the bitstream.
 5. In Vitis, update or recreate the platform from the new XSA, then rebuild the BSP and application.
 
+The software uses `log()` and `sqrt()` from the C math library. If Vitis reports an undefined reference to either function, open the application project's linker settings and add `m` to the libraries list (Vitis passes this to the linker as `-lm`).
+
 The C program initializes the AXI Traffic Generator in streaming mode, requests one 128-beat transaction, starts S2MM before the source, waits with a timeout, adds Gaussian noise to the two valid encoded bits, and sends the hard decisions to the Viterbi Decoder.
 
 ## 4. What is and is not automatically verified
