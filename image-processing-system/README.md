@@ -2,6 +2,10 @@
 
 This project demonstrates a simple hardware/software image-processing pipeline on the PYNQ-Z2 board.
 
+## Block design
+
+![Vivado block design](images/block-design.png)
+
 ## What the project does
 
 1. The Video Test Pattern Generator creates a 64 × 64 RGB color-bar image.
